@@ -1,0 +1,240 @@
+{
+    "Ads": [
+        {
+            "title": "VAST - Ad",
+            "file": "http://content.bitsontherun.com/videos/bkaovAYt-52qL9xLP.mp4",
+            "image": "http://d3el35u4qe4frz.cloudfront.net/bkaovAYt-480.jpg",
+            "advertising": {
+                "debug": true,
+                "adscheduleid": "00000000",
+                "client": "http://player-pr-test-jenkins.longtailvideo.com/builds/25683/archive/bin-debug/vast.js",
+                "skipoffset": 5,
+                "companiondiv": {
+                    "id": "companions-squash-player-1284",
+                    "height": 250,
+                    "width": 300
+                },
+                "schedule": {
+                    "adbreak1": {
+                        "offset": "pre",
+                        "ad": {
+                            "tag": "http://playertest.longtailvideo.com/pre-60s.xml"
+                        }
+                    },
+                    "adbreak2": {
+                        "offset": "15",
+                        "ad": {
+                            "tag": "http://playertest.longtailvideo.com/pre-60s.xml"
+                        }
+                    },
+                    "adbreak3": {
+                        "offset": "post",
+                        "ad": {
+                            "tag": "http://playertest.longtailvideo.com/vast-30s-ad.xml"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "title": "DAI - Ad",
+            "file": "https://content.jwplatform.com/manifests/Qlh3p9ly.m3u8",
+            "daiSetting": {
+                "cmsID": "2477953",
+                "videoID": "tears-of-steel"
+            },
+            "advertising": {
+                "debug": true,
+                "client": "http://player-pr-test-jenkins.longtailvideo.com/builds/25683/archive/bin-debug/dai.js",
+                "cmsID": "2477953",
+                "videoID": "tears-of-steel"
+            }
+        },
+        {
+            "title": "Freewheel - Ad",
+            "file": "https://content.bitsontherun.com/videos/3XnJSIm4-injeKYZS.mp4",
+            "fwassetid": "jw_test_asset_d",
+            "duration": 500,
+            "advertising": {
+                "client": "http://player-pr-test-jenkins.longtailvideo.com/builds/25683/archive/bin-debug/freewheel.js",
+                "skipoffset": 3,
+                "freewheel": {
+                    "networkid": 90750,
+                    "serverid": "http://demo.v.fwmrm.net/ad/g/1",
+                    "profileid": "90750:jw_html5_test",
+                    "sectionid": "jw_test_site_section"
+                },
+                "adscheduleid": "00000000",
+                "schedule": {
+                    "adbreak": {
+                        "offset": "pre",
+                        "tag": "placeholder_preroll"
+                    },
+                    "adbreak2": {
+                        "offset": "15",
+                        "tag": "placeholder_midroll"
+                    },
+                    "adbreak4": {
+                        "offset": "post",
+                        "tag": "placeholder_postroll"
+                    }
+                }
+            }
+        },
+        {
+	        "title": "Googima-Ad (Unsupported)",
+	        "file": "http://content.bitsontherun.com/videos/bkaovAYt-52qL9xLP.mp4",
+	        "image": "http://d3el35u4qe4frz.cloudfront.net/bkaovAYt-480.jpg",
+	        "advertising": {
+	            "debug": true,
+	            "client": "http://player-pr-test-jenkins.longtailvideo.com/builds/25683/archive/bin-debug/googima.js",
+	            "schedule": {
+	                "my_ad": {
+	                    "tag": "https://playertest.longtailvideo.com/vast-30s-ad.xml",
+	                    "offset": "pre"
+	                },
+	                "my_midroll_test": {
+	                    "tag": "https://playertest.longtailvideo.com/mid.xml",
+	                    "offset": "5"
+	                },
+	                "my_postroll": {
+	                    "tag": "http://playertest.longtailvideo.com/post.xml",
+	                    "offset": "post"
+	                }
+	            }
+	        }
+	    }
+    ],
+    "Basic": [ 
+        {
+            "title":"MP4",
+            "file":"https://cdn.jwplayer.com/videos/V3D2hVQR-mjpS2Ylx.mp4",
+            "image":"https://cdn.jwplayer.com/thumbs/V3D2hVQR-360.jpg"
+        },
+        {
+            "title":"DASH",
+            "file":"https://s3.amazonaws.com/aiv-prod-dash-iad/5974/24e9/b3a6/4963-91cf-dfd6e0433cbc/c16b9d5a-9217-4fb1-94e6-05ed1f6ea768_generic.mpd"
+        },
+        {
+            "title":"HLS",
+            "file":"https://playertest.longtailvideo.com/adaptive/bipbop_16x9/bipbop_16x9_variant_with_daterange.m3u8",
+            "image":"https://content.bitsontherun.com/thumbs/bkaovAYt-720.jpg"
+        },
+        {
+            "title":"Audio Only",
+    		"file": "http://playertest.longtailvideo.com/adaptive/jazzy/prog_index.m3u8"
+        },
+        {
+            "title": "Settings Menu",
+            "file": "https://playertest.longtailvideo.com/adaptive/eleph-audio/wowza-2audiotracks.m3u8",
+            "image": "https://assets-jpcust.jwpsrv.com/thumbs/kaUXWqTZ-720.jpg",
+            "description": "Elephant's Dream is a 3d animation created by Blender, an open source 3d rendering piece of software",
+            "width": "100%",
+            "playbackRateControls": true,
+            "aspectratio": "16:9",
+            "logo": {
+                "file": "http://player-pr-test-jenkins.longtailvideo.com/builds/25683/archive/test/assets/jw-logo-red-46px.png",
+                "link": ""
+            }
+        },
+        {
+            "title": "Playlist",
+            "playlist": [
+                {
+                    "sources": [
+                        {
+                            "file": "http://content.bitsontherun.com/videos/3XnJSIm4-52qL9xLP.mp4"
+                        }
+                    ],
+                    "image": "http://content.bitsontherun.com/thumbs/3XnJSIm4-480.jpg",
+                    "title": "Sintel Trailer"
+                },
+                {
+                    "sources": [
+                        {
+                            "file": "http://content.jwplatform.com/videos/V3D2hVQR-B2XWaEP9.mp4"
+                        }
+                    ],
+                    "image": "http://content.jwplatform.com/thumbs/V3D2hVQR-320.jpg",
+                    "title": "Caminandes"
+                },
+                {
+                    "sources": [
+                        {
+                            "file": "http://content.bitsontherun.com/videos/bkaovAYt-52qL9xLP.mp4"
+                        }
+                    ],
+                    "image": "http://d3el35u4qe4frz.cloudfront.net/bkaovAYt-480.jpg",
+                    "title": "Bunny Trailer"
+                },
+                {
+                    "sources": [
+                        {
+                            "file": "http://content.bitsontherun.com/videos/kaUXWqTZ-52qL9xLP.mp4"
+                        }
+                    ],
+                    "title": "Elephants Dream Trailer",
+                    "image": "http://d3el35u4qe4frz.cloudfront.net/kaUXWqTZ-480.jpg"
+                }
+            ]
+        }
+    ],
+    "Captions": [
+        {
+            "title":"VTT Captions",
+    		"file":"https://content.jwplatform.com/videos/s8BPzDe0.mp4",
+            "image":"https://content.bitsontherun.com/thumbs/bkaovAYt-720.jpg",
+            "tracks": [
+		      {
+		        "file":"https://playertest.longtailvideo.com/captions/second_cue_wrap.vtt",
+		        "kind":"captions"
+		      }
+		    ]
+        },        
+        {
+            "title": "608 Captions",
+            "file": "https://playertest.longtailvideo.com/adaptive/paradise/paradise-novtt.m3u8"
+        },
+        {
+            "title": "DFXP Captions",
+            "file": "http://content.bitsontherun.com/videos/bkaovAYt-52qL9xLP.mp4",
+            "image": "http://content.bitsontherun.com/thumbs/bkaovAYt-720.jpg",
+            "tracks": [
+                {
+                    "file": "https://playertest.longtailvideo.com/assets/os/captions/bunny-eng.xml",
+                    "label": "English",
+                    "kind": "captions"
+                }
+            ]
+        },
+        {
+            "title": "SRT Captions",
+            "file": "http://content.bitsontherun.com/videos/bkaovAYt-52qL9xLP.mp4",
+            "image": "http://content.bitsontherun.com/thumbs/bkaovAYt-720.jpg",
+            "tracks": [
+                {
+                    "file": "https://playertest.longtailvideo.com/assets/os/captions/bunny-en.srt",
+                    "label": "English",
+                    "kind": "captions"
+                }
+            ]
+        },
+        {
+            "title": "RSS Captions",
+            "captions": {
+                "back": true
+            },
+            "playlist": "http://playertest.longtailvideo.com/assets/os/captions/captions.rss"
+        }
+    ],
+    "DVR-Live": [
+        {
+            "title": "DASH - DVR",
+            "file": "https://vm2.dashif.org/livesim-dev/ato_inf/testpic_2s/Manifest.mpd"
+        },
+        {
+            "title":"HLS - LIVE",
+            "file":"https://cdn-videos.akamaized.net/btv/desktop/fastly/us/live/primary.m3u8"
+        }
+    ]
+}
