@@ -4,11 +4,11 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    mode: 'production',
+    mode: 'none',
     entry: './src/js/index.js',
     output: {
         path: `${__dirname}/app/dist`,
-        filename: 'js/jw-tizen.min.js'
+        filename: 'js/jw-tizen.js'
     },
     module: {
         rules: [
@@ -46,7 +46,7 @@ module.exports = {
             template: './src/html/video-detail.html'
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/jw-tizen.min.css',
+            filename: 'css/jw-tizen.css',
         }),
     ]
 }
