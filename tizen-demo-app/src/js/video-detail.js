@@ -34,24 +34,25 @@ export class VideoDetail {
         // Remote Handlers
         const handleKeydown = (event) => {
             const activeButton = this.activeButton;
-			switch(event.keyCode) {
+            const aboveButton = activeButton.previousElementSibling;
+            const belowButton = activeButton.nextElementSibling;
+
+            switch(event.keyCode) {
                 case 38: // Up Arrow
-                    const aboveButton = activeButton.previousElementSibling;
                     if (aboveButton) {
                         activeButton.classList.remove('jw-active');
                         aboveButton.classList.add('jw-active');
                         this.activeButton = aboveButton;
                     }
-					break;
+                    break;
                 case 40: // Down Arrow
-                    const belowButton = activeButton.nextElementSibling;
                     if (belowButton) {
                         activeButton.classList.remove('jw-active');
                         belowButton.classList.add('jw-active');
                         this.activeButton = belowButton;
                     }
-					break;
-				case 13: // Enter/Ok
+                    break;
+                case 13: // Enter/Ok
                     this.activeButton.click();
                     break;
                 case 415: // Play
@@ -61,12 +62,12 @@ export class VideoDetail {
                 case 37: // Left Arrow
                 case 10009: // Back/Return
                     this.prevPageCallback();
-				    this.destroy();
+                    this.destroy();
                     break;
                 case 10182: // Exit/Home
-				    this.destroy();
-					break;
-				default:
+                    this.destroy();
+                    break;
+                default:
                     break;
             }
         }
