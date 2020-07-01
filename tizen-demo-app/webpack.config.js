@@ -1,4 +1,3 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
@@ -40,11 +39,6 @@ module.exports = {
         ],
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            inject: false,
-            filename: 'html/video-detail.html',
-            template: './src/html/video-detail.html'
-        }),
         new MiniCssExtractPlugin({
             filename: 'css/jw-tizen.css',
         }),
