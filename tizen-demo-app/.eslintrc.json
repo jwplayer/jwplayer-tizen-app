@@ -8,7 +8,8 @@
         "sourceType": "module"
     },
     "rules": {
-        "indent": [1, 4],
-        "quotes": [1, "single", { "allowTemplateLiterals": true }]
+        "indent": [1, 4, { "SwitchCase":1 }],
+        "quotes": [1, "single", { "allowTemplateLiterals": true }],
+        "eol-last": 1
     }
 }
