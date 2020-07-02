@@ -3,7 +3,7 @@ import indexTemplate from './templates/index';
 import '../css/jw-tizen.css';
 
 function init() {
-    const mainDiv = document.querySelector('#Main');
+    const mainDiv = document.querySelector('#main');
     mainDiv.innerHTML = indexTemplate();
     addEventListeners();
 }

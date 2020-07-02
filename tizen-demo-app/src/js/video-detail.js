@@ -75,7 +75,7 @@ export class VideoDetail {
         document.addEventListener('keydown', handleKeydown);
         this.keydownCallback = handleKeydown;
 
-        const mainDiv = document.querySelector('#Main');
+        const mainDiv = document.querySelector('#main');
         mainDiv.removeChild(mainDiv.firstElementChild);
         mainDiv.appendChild(this.div);
     }
