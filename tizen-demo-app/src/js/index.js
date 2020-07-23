@@ -20,10 +20,11 @@ function loadVideoDetail() {
     removeEventListeners();
     new VideoDetail(
         {
-            title: 'How Wild Animals are Affected by Coronavirus Lockdown',
-            description: 'While some animals are thriving in a world without humans, others might actually be hurting during this lockdown.',
-            duration: 12,
-            thumbnail: 'https://www.publicdomainpictures.net/pictures/250000/velka/lion-sunset-silhouette.jpg'
+            'file': 'https://cdn.jwplayer.com/videos/V3D2hVQR-mjpS2Ylx.mp4',
+            'title': 'Caminandes',
+            'image': 'http://content.jwplatform.com/thumbs/V3D2hVQR-1280.jpg',
+            'description': 'Caminandes is a short movie taking place in Southern Patagonia, South America.',
+            'duration': 3
         },
         init
     );
