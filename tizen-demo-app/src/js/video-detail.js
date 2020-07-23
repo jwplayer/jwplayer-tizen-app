@@ -1,4 +1,5 @@
-import videoDetailTemplate from './templates/video-detail';
+import VideoDetailTemplate from './templates/video-detail';
+import VideoPlayer from './player';
 
 function button(name, onClickCallback) {
     const buttonEl = document.createElement('button');
@@ -13,21 +14,22 @@ export class VideoDetail {
         this.div = null;
         this.activeButton = null;
         this.keydownCallback = null;
+        this.config = config;
         this.prevPageCallback = prevPageCallback;
 
-        this.init(config);
+        this.init();
     }
 
-    init(config) {
+    init() {
         const pageDiv = document.createElement('div');
         pageDiv.className = 'jw-tizen-page';
         this.div = pageDiv;
 
-        const videoDetail = videoDetailTemplate(config.title, config.duration, config.description);
+        const videoDetail = VideoDetailTemplate(this.config.title, this.config.duration, this.config.description);
         this.div.innerHTML = videoDetail;
 
         const previewImage = this.div.querySelector('.jw-tizen-preview');
-        previewImage.style.backgroundImage = `url(${config.thumbnail})`;
+        previewImage.style.backgroundImage = `url(${this.config.image})`;
 
         this.addButtons();
 
@@ -72,8 +74,8 @@ export class VideoDetail {
             }
         }
 
-        document.addEventListener('keydown', handleKeydown);
         this.keydownCallback = handleKeydown;
+        document.addEventListener('keydown', this.keydownCallback);
 
         const mainDiv = document.querySelector('#main');
         mainDiv.removeChild(mainDiv.firstElementChild);
@@ -83,20 +85,15 @@ export class VideoDetail {
     addButtons() {
         const buttonContainer = this.div.querySelector('.jw-tizen-button-container');
 
-        const playButton = button('Play', this.play);
+        const playButton = button('Play', () => this.play());
         playButton.classList.add('jw-active');
         buttonContainer.appendChild(playButton);
         this.activeButton = playButton;
-
-        const extraButton1 = button('EXTRA 1', () => alert('E1'));
-        buttonContainer.appendChild(extraButton1);
-
-        const extraButton2 = button('EXTRA 2', () => alert('E2'));
-        buttonContainer.appendChild(extraButton2);
     }
 
     play() {
-        alert('Play');
+        this.destroy();
+        new VideoPlayer(this.config, () => this.init());
     }
 
     destroy() {
