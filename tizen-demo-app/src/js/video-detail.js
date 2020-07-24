@@ -1,5 +1,5 @@
 import VideoDetailTemplate from './templates/video-detail';
-import VideoPlayer from './player';
+import Player from './player';
 
 function button(name, onClickCallback) {
     const buttonEl = document.createElement('button');
@@ -93,7 +93,7 @@ export class VideoDetail {
 
     play() {
         this.destroy();
-        new VideoPlayer(this.config, () => this.init());
+        new Player(this.config, () => this.init());
     }
 
     destroy() {

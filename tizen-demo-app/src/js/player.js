@@ -11,8 +11,7 @@ export default function(config, prevPageCallback) {
         switch(event.keyCode) {
             case 10009: // Back/Return
                 if (jwplayer().getState() === 'error') {
-                    prevPageCallback();
-                    document.removeEventListener('keydown', handleKeydown);
+                    onBackClick();
                 }
                 break;
             default:
@@ -22,6 +21,11 @@ export default function(config, prevPageCallback) {
 
     jwplayer('tizen-player').setup(config);
 
-    jwplayer().on('backClick', () => prevPageCallback());
+    jwplayer().on('backClick', () => onBackClick());
     document.addEventListener('keydown', handleKeydown);
+
+    function onBackClick() {
+        prevPageCallback();
+        document.removeEventListener('keydown', handleKeydown);
+    }
 }
