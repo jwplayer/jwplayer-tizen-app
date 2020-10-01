@@ -42,15 +42,13 @@ export class VideoDetail {
             switch(event.keyCode) {
                 case 38: // Up Arrow
                     if (aboveButton) {
-                        activeButton.classList.remove('jw-active');
-                        aboveButton.classList.add('jw-active');
+                        aboveButton.focus();
                         this.activeButton = aboveButton;
                     }
                     break;
                 case 40: // Down Arrow
                     if (belowButton) {
-                        activeButton.classList.remove('jw-active');
-                        belowButton.classList.add('jw-active');
+                        belowButton.focus();
                         this.activeButton = belowButton;
                     }
                     break;
@@ -84,10 +82,10 @@ export class VideoDetail {
 
     addButtons() {
         const buttonContainer = this.div.querySelector('.jw-tizen-button-container');
-
         const playButton = button('Play', () => this.play());
-        playButton.classList.add('jw-active');
+
         buttonContainer.appendChild(playButton);
+        playButton.focus();
         this.activeButton = playButton;
     }
 
