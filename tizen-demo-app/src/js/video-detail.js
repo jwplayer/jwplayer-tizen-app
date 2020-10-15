@@ -9,6 +9,14 @@ function button(name, onClickCallback) {
     return buttonEl;
 }
 
+function getDurationMinutes(durationInSeconds) {
+    const dur = durationInSeconds / 60;
+    if (dur < 1) {
+        return dur.toFixed(1);
+    }
+    return Math.round(dur);
+}
+
 export class VideoDetail {
     constructor(config, prevPageCallback) {
         this.div = null;
@@ -25,7 +33,11 @@ export class VideoDetail {
         pageDiv.className = 'jw-tizen-page';
         this.div = pageDiv;
 
-        const videoDetail = VideoDetailTemplate(this.config.title, this.config.duration, this.config.description);
+        const videoDetail = VideoDetailTemplate(
+            this.config.title, 
+            getDurationMinutes(this.config.duration),
+            this.config.description
+        );
         this.div.innerHTML = videoDetail;
 
         const previewImage = this.div.querySelector('.jw-tizen-preview');
