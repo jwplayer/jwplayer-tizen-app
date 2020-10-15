@@ -92,8 +92,11 @@ export class VideoDetail {
         document.addEventListener('keydown', this.keydownCallback);
 
         const mainDiv = document.querySelector('#main');
-        mainDiv.removeChild(mainDiv.firstElementChild);
+        if (mainDiv.firstElementChild) {
+            mainDiv.removeChild(mainDiv.firstElementChild);
+        }
         mainDiv.appendChild(this.div);
+        this.activeButton.focus();
     }
 
     addButtons() {
@@ -101,7 +104,6 @@ export class VideoDetail {
         const playButton = button('Play', () => this.play());
 
         buttonContainer.appendChild(playButton);
-        playButton.focus();
         this.activeButton = playButton;
     }
 
@@ -115,5 +117,6 @@ export class VideoDetail {
             document.removeEventListener('keydown', this.keydownCallback);
             this.keydownCallback = null;
         }
+        this.div.parentElement.removeChild(this.div);
     }
 }

@@ -1,33 +1,16 @@
-import { VideoDetail } from './video-detail';
-import indexTemplate from './templates/index';
+import { Gallery } from './playlist';
 import '../css/jw-tizen.css';
 
+let gallery;
+
 function init() {
-    const mainDiv = document.querySelector('#main');
-    mainDiv.innerHTML = indexTemplate();
-    addEventListeners();
-}
-
-function addEventListeners() {
-    document.getElementById('LionVideoDetail').addEventListener('click', loadVideoDetail);
-}
-
-function removeEventListeners() {
-    document.getElementById('LionVideoDetail').removeEventListener('click', loadVideoDetail);
-}
-
-function loadVideoDetail() {
-    removeEventListeners();
-    new VideoDetail(
-        {
-            'file': 'https://cdn.jwplayer.com/videos/V3D2hVQR-mjpS2Ylx.mp4',
-            'title': 'Caminandes',
-            'image': 'http://content.jwplatform.com/thumbs/V3D2hVQR-1280.jpg',
-            'description': 'Caminandes is a short movie taking place in Southern Patagonia, South America.',
-            'duration': 3
-        },
+    const mainDiv = document.getElementById('main');
+    gallery = new Gallery({ 
+        playlists: ['EVcVD4iH', 'B8FTSH9D'],
+        parent: { view: mainDiv },
         init
-    );
+    });
+    gallery.init();
 }
 
 window.onload = init;
