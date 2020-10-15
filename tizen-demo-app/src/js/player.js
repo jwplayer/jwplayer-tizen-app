@@ -19,6 +19,7 @@ export default function(config, prevPageCallback) {
     jwplayer().on('backClick', () => onBackClick());
 
     function onBackClick() {
+        mainDiv.removeChild(mainDiv.firstElementChild);
         prevPageCallback();
     }
 }
