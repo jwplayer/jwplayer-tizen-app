@@ -29,14 +29,14 @@ class Tile extends ViewModel {
     }
     
     init() {
-        const { parent, blurCallback, playCallback, describeCallback } = this.props;
+        const { parent, focusCallback, playCallback, describeCallback } = this.props;
         const rowElement = parent && parent.view.querySelector('.jw-tizen-playlist-row');
         if (rowElement) {
             rowElement.appendChild(this.view);
         }
-        if (blurCallback) {
-            this.view.removeEventListener('blur', blurCallback);
-            this.view.addEventListener('blur', blurCallback);
+        if (focusCallback) {
+            this.view.removeEventListener('focus', focusCallback);
+            this.view.addEventListener('focus', focusCallback);
         }
 
         if (playCallback && describeCallback) {
@@ -83,7 +83,7 @@ class Row extends ViewModel {
             const tile = new Tile({ 
                 viewProps: { title, image }, 
                 parent: this,
-                blurCallback: this.onTileFocused,
+                focusCallback: this.onTileFocused,
                 playCallback: (evt) => this.props.parent.play(playlistItem, evt),
                 describeCallback: (evt) => this.props.parent.describe(playlistItem, evt)
             }, playlistItemTemplate);
@@ -94,6 +94,7 @@ class Row extends ViewModel {
 
     onTileFocused(evt) {
         this.previousSelection = evt.target;
+        evt.target.scrollIntoView({block: 'center'});
     }
 
     handleKeydown(evt) {
@@ -185,8 +186,11 @@ export class Gallery extends ViewModel {
         if (!playlists || !playlists.length) {
             return;
         }
+        this.createBanner(bannerItem, playlists);
+        this.createRows(playlists)
+    }
 
-        // Create banner
+    createBanner(bannerItem, playlists) {
         if (!bannerItem) {
             bannerItem = Object.assign({}, playlists[0].playlist[0]);
             playlists[0].playlist.shift();
@@ -199,7 +203,9 @@ export class Gallery extends ViewModel {
         this.playButton.onkeydown = (evt) => this.handleBannerKeydown(evt, this.play.bind(this));
         this.detailsButton.onkeydown = (evt) => this.handleBannerKeydown(evt, this.describe.bind(this));
         this.bannerItem = bannerItem;
-        // Create Rows
+    }
+
+    createRows(playlists) {
         playlists.forEach((playlist, index) => {
             const playlistItems = playlist.playlist
             const { title } = playlist;
