@@ -6,7 +6,9 @@ export function playlistRowTemplate({ title }) {
     return (
         `<div class="jw-tizen-row-container">
             <div class="jw-tizen-row-title jw-tizen-text">${title}</div>
-            <div class="jw-tizen-playlist-row"></div>
+            <div class="jw-tizen-playlist-row-wrapper">
+                <div class="jw-tizen-playlist-row"></div>
+            </div>
         </div>`);
 }
 
