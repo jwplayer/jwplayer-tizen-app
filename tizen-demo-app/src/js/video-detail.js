@@ -10,7 +10,7 @@ function button(name, onClickCallback) {
 }
 
 function getDurationMinutes(durationInSeconds) {
-    if (!durationInSeconds) {
+    if (!durationInSeconds || durationInSeconds === 0) {
         return;
     }
 
