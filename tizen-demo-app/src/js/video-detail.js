@@ -10,6 +10,10 @@ function button(name, onClickCallback) {
 }
 
 function getDurationMinutes(durationInSeconds) {
+    if (!durationInSeconds) {
+        return;
+    }
+
     const dur = durationInSeconds / 60;
     if (dur < 1) {
         return dur.toFixed(1);
