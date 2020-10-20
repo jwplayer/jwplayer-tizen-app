@@ -11,6 +11,8 @@ export default function(config, prevPageCallback) {
     }
     mainDiv.appendChild(playerDiv);
 
+    // Always set autostart true
+    Object.assign(config, {'autostart': true});
     jwplayer('tizen-player').setup(config);
 
     jwplayer().on('error', () => ErrorState(prevPageCallback));
