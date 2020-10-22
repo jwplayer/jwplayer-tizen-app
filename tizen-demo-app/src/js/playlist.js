@@ -1,6 +1,5 @@
 import Player from './player';
 import { VideoDetail } from './video-detail';
-
 import {
     playlistGalleryTemplate,
     playlistRowTemplate,
@@ -12,13 +11,21 @@ import {
 class ViewModel {
     constructor(props, template) {
         this.props = props || {};
-        this.view = createHTML(template(this.props.viewProps));
+        this.template = template;
+        this.view = null;
     }
 
     init() {
         if (this.props.parent) {
             this.props.parent.view.appendChild(this.view);
         }
+    }
+
+    layout() {
+        // Convert template string to HTML view
+        const { template, props: { viewProps } } = this;
+        this.view = createHTML(template(viewProps));
+        delete this.template;
     }
 }
 
@@ -29,7 +36,8 @@ class Tile extends ViewModel {
     }
     
     init() {
-        const { parent, focusCallback, playCallback, describeCallback } = this.props;
+        this.layout();
+        const { parent, focusCallback } = this.props;
         const rowElement = parent && parent.view.querySelector('.jw-tizen-playlist-row');
         if (rowElement) {
             rowElement.appendChild(this.view);
@@ -39,10 +47,8 @@ class Tile extends ViewModel {
             this.view.addEventListener('focus', focusCallback);
         }
 
-        if (playCallback && describeCallback) {
-            this.view.removeEventListener('keydown', this.handleKeydown);
-            this.view.addEventListener('keydown', this.handleKeydown);
-        }
+        this.view.removeEventListener('keydown', this.handleKeydown);
+        this.view.addEventListener('keydown', this.handleKeydown);
     }
 
     handleKeydown(evt) {
@@ -50,11 +56,15 @@ class Tile extends ViewModel {
 
         switch(evt.keyCode) {
             case 13: // Enter/Ok
-                describeCallback(evt);
+                if (describeCallback) {
+                    describeCallback(evt);
+                }
                 break;
             case 415: // Play
             case 10252: // Play/Pause
-                playCallback(evt);
+                if (playCallback) {
+                    playCallback(evt);
+                }
                 break;
         }
     }
@@ -63,31 +73,40 @@ class Tile extends ViewModel {
 class Row extends ViewModel {
     constructor(props, template) {
         super(props, template);
-
         this.banner = null;
         this.previousSelection = null;
         this.tiles = [];
         this.onTileFocused = this.onTileFocused.bind(this);
         this.handleKeydown = this.handleKeydown.bind(this);
+    }
 
-        const { playlistItems } = props;
-
-        if (playlistItems && Array.isArray(playlistItems)) {
-            this.createTiles(playlistItems);
-        }
+    init() {
+        this.layout();
+        const { view } = this;
+        view.removeEventListener('keydown', this.handleKeydown);
+        view.addEventListener('keydown', this.handleKeydown);
+        super.init();
     }
     
-    createTiles(playlistItems) {
+    layout() {
+        super.layout();
+        const { playlistItems } = this.props;
+
+        if (!playlistItems || !Array.isArray(playlistItems)) {
+            return;
+        }
+        const { props, tiles } = this;
+
         playlistItems.forEach(playlistItem => {
             const { title, image } = playlistItem;
             const tile = new Tile({ 
                 viewProps: { title, image }, 
                 parent: this,
                 focusCallback: this.onTileFocused,
-                playCallback: (evt) => this.props.parent.play(playlistItem, evt),
-                describeCallback: (evt) => this.props.parent.describe(playlistItem, evt)
+                playCallback: (evt) => props.parent.play(playlistItem, evt),
+                describeCallback: (evt) => props.parent.describe(playlistItem, evt)
             }, playlistItemTemplate);
-            this.tiles.push(tile);
+            tiles.push(tile);
             tile.init();
         });
     }
@@ -109,11 +128,14 @@ class Row extends ViewModel {
             if (!selection) {
                 return;
             }
-            if (selection.previousSelection) {
-                selection.previousSelection.focus();
-            } else {
-                selection.tiles[0] && selection.tiles[0].view && selection.tiles[0].view.focus();
-            } 
+            const previousSelection = selection.previousSelection;
+            if (previousSelection) {
+                previousSelection.focus();
+                return;
+            }
+            const firstTile = selection.tiles[0] || {};
+            const { view } = firstTile;
+            view && view.focus();
         }
 
         switch(evt.keyCode) {
@@ -148,12 +170,6 @@ class Row extends ViewModel {
                 break;
         }
     }
-
-    init() {
-        this.view.removeEventListener('keydown', this.handleKeydown);
-        this.view.addEventListener('keydown', this.handleKeydown);
-        super.init();
-    }
 }
 
 export class Gallery extends ViewModel {
@@ -165,50 +181,59 @@ export class Gallery extends ViewModel {
         this.bannerItem = null;
         this.playButton = null;
         this.detailsButton = null;
-        this.getData(props).then(playlists => {
-            this.layout(playlists, props.bannerItem);
+    }
+
+    init() {
+        const { props } = this;
+
+        this.getData(props).then(feeds => {
+            this.layout(feeds, props.bannerItem);
+            this.addEventListeners();
+            props.parent.view.appendChild(this.view);
             this.playButton.focus();
         });
     }
     
     getData(props) {
-        const playlistPromises = [];
-        const { playlists } = props;
-        if (playlists) {
-            playlists.forEach(playlist => {
-                playlistPromises.push(playlistPromise(playlist));
+        const feedPromises = [];
+        const { feeds } = props;
+        if (feeds) {
+            feeds.forEach(feed => {
+                feedPromises.push(feedPromise(feed));
             });
         } 
-        return Promise.all(playlistPromises);
+        return Promise.all(feedPromises);
     }
 
-    layout(playlists, bannerItem) {
-        if (!playlists || !playlists.length) {
+    layout(feeds, bannerItem) {
+        super.layout();
+        if (!feeds || !feeds.length) {
             return;
         }
-        this.createBanner(bannerItem, playlists);
-        this.createRows(playlists)
+        this.createBanner(bannerItem, feeds);
+        this.createRows(feeds)
     }
 
-    createBanner(bannerItem, playlists) {
+    createBanner(bannerItem, feeds) {
         if (!bannerItem) {
-            bannerItem = Object.assign({}, playlists[0].playlist[0]);
-            playlists[0].playlist.shift();
+            const firstPlaylist = feeds[0].playlist;
+            bannerItem = Object.assign({}, firstPlaylist[0]);
+            firstPlaylist.shift();
         }
 
         const banner = createBanner(bannerItem);
         this.view.appendChild(banner);
-        this.playButton = banner.querySelector('.jw-tizen-play');
-        this.detailsButton = this.playButton.nextElementSibling;
-        this.playButton.onkeydown = (evt) => this.handleBannerKeydown(evt, this.play.bind(this));
+        const playButton = this.playButton = banner.querySelector('.jw-tizen-play');
+        this.detailsButton = playButton.nextElementSibling;
+        playButton.onkeydown = (evt) => this.handleBannerKeydown(evt, this.play.bind(this));
         this.detailsButton.onkeydown = (evt) => this.handleBannerKeydown(evt, this.describe.bind(this));
         this.bannerItem = bannerItem;
     }
 
-    createRows(playlists) {
-        playlists.forEach((playlist, index) => {
-            const playlistItems = playlist.playlist
-            const { title } = playlist;
+    createRows(feeds) {
+        feeds.forEach((feed, index) => {
+            const playlistItems = feed.playlist
+            const { title } = feed;
             const row = new Row({ 
                 index,
                 parent: this,
@@ -225,10 +250,12 @@ export class Gallery extends ViewModel {
     }
 
     handleKeydown(evt) {
+        const prevPageCallback = this.props.prevPageCallback;
+
         switch(evt.keyCode) {
             case 10009: // Back/Return
-                if (this.props.prevPageCallback) {
-                    this.props.prevPageCallback();
+                if (prevPageCallback) {
+                    prevPageCallback();
                     this.destroy();
                 }
                 break;
@@ -241,21 +268,24 @@ export class Gallery extends ViewModel {
     }
 
     handleBannerKeydown (evt, action) {
-        const wrapFocusToFirstRow = () => (this.rows[0].previousSelection || this.rows[0].tiles[0].view).focus();
+        const { bannerItem, detailsButton, rows, playButton } = this;
+        const row = rows[0];
+        const wrapFocusToFirstRow = () => (row.previousSelection || row.tiles[0].view).focus();
+
         switch(evt.keyCode) {
             case 13: // Enter/Ok
             case 415: // Play
             case 10252: // Play/Pause
-                action(this.bannerItem, evt);
+                action(bannerItem, evt);
                 break;
             case 37: // Left Arrow
-                this.playButton.focus();
+                playButton.focus();
                 break;
             case 39: // Right Arrow
-                if (evt.target === this.detailsButton) {
+                if (evt.target === detailsButton) {
                     return wrapFocusToFirstRow();
                 }
-                this.detailsButton.focus();
+                detailsButton.focus();
                 break;
             case 40: // Down Arrow
                 wrapFocusToFirstRow()
@@ -265,22 +295,18 @@ export class Gallery extends ViewModel {
         }
     }
 
-    init() {
-        this.addEventListeners();
-        this.props.parent.view.appendChild(this.view);
-    }
-
     destroy() {
-        if (this.view) {
-            this.view.removeEventListener('keydown', this.handleKeydown);
+        const { detailsButton, playButton, props, view } = this;
+        if (view) {
+            view.removeEventListener('keydown', this.handleKeydown);
         }
-        if (this.playButton) {
-            this.playButton.onkeydown = null;
+        if (playButton) {
+            playButton.onkeydown = null;
         } 
-        if (this.detailsButton) {
-            this.detailsButton.onkeydown = null;
+        if (detailsButton) {
+            detailsButton.onkeydown = null;
         }
-        this.props.parent.view.removeChild(this.view);
+        props.parent.view.removeChild(view);
     }
 
     play(config, evt) {
@@ -308,23 +334,26 @@ function createHTML(htmlString) {
     return parser.parseFromString(htmlString, 'text/html').body.firstChild;
 }
 
-function fetchPlaylist(playlist) {
-    const url = `https://cdn.jwplayer.com/v2/playlists/${playlist}`;
+function fetchFeed(pid) {
+    const url = `https://cdn.jwplayer.com/v2/playlists/${pid}`;
     return fetch(url)
         .then(res => res.json())
         .catch(err => err);
 }
 
-function playlistPromise(playlist) {
+function feedPromise(feed) {
     return new Promise((res, rej) => {
-        if (!playlist) {
+        if (!feed) {
             return rej(new Error('Error: No playlist found'));
         }
-        if (typeof playlist === 'string') {
-            return fetchPlaylist(playlist).then(playlist => res(playlist)).catch(err => rej(err));
+
+        const feedType = typeof feed;
+
+        if (feedType === 'string') {
+            return fetchFeed(feed).then(feed => res(feed)).catch(err => rej(err));
         }
-        if (typeof playlist === 'object') {
-            return res(playlist)
+        if (feedType === 'object') {
+            return res(feed)
         }
         rej(new Error('Error: Unrecognized playlist format'));
     });    

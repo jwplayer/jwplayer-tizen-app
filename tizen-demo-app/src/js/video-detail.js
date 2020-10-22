@@ -76,8 +76,9 @@ export class VideoDetail {
         document.addEventListener('keydown', this.keydownCallback);
 
         const mainDiv = document.querySelector('#main');
-        if (mainDiv.firstElementChild) {
-            mainDiv.removeChild(mainDiv.firstElementChild);
+        const firstChild = mainDiv.firstElementChild;
+        if (firstChild) {
+            mainDiv.removeChild(firstChild);
         }
         mainDiv.appendChild(this.div);
         this.activeButton.focus();
