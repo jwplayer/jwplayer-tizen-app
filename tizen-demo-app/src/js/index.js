@@ -6,7 +6,7 @@ let gallery;
 function init() {
     const mainDiv = document.getElementById('main');
     gallery = new Gallery({ 
-        playlists: ['EVcVD4iH', 'B8FTSH9D'],
+        feeds: ['EVcVD4iH', 'B8FTSH9D'],
         parent: { view: mainDiv },
         init
     });
