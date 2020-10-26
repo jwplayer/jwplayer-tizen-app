@@ -10,7 +10,6 @@
     <tizen:metadata key="http://samsung.com/tv/metadata/prelaunch.support" value="true"/>
     <name>TizenDemoApp</name>
     <tizen:privilege name="http://tizen.org/privilege/internet"/>
-    <tizen:privilege name="http://developer.samsung.com/privilege/network.public"/>
     <tizen:profile name="tv-samsung"/>
     <tizen:setting screen-orientation="landscape" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
 </widget>
