@@ -1,0 +1,178 @@
+.jw-tizen-playlist-gallery {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img.jw-tizen-banner-background {
+    width: 100%;
+}
+
+img.jw-tizen-banner-background:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: #000;
+}
+
+.jw-tizen-banner-wrapper {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+}
+
+.jw-tizen-banner-wrapper:before {
+    content: '';
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000 59%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+:root {
+    --size-constant: 1;
+  }
+
+@media (min-device-width: 2560px) {
+    :root {
+        --size-constant: calc(1 + 1/3);
+      }
+}
+
+@media (min-device-width: 3840px) {
+    :root {
+        --size-constant: 2;
+      }
+}
+
+.jw-tizen-playlist-row {
+    display: inline-flex;
+    margin: 0 auto;
+    position: relative;
+    padding-top: calc(var(--size-constant) * 30px);
+}
+
+.jw-tizen-banner-title {
+    font-family: Arial;
+    font-size: calc(var(--size-constant) * 92px);
+    font-weight: normal;
+    color: #f9f9f9;
+    margin-left: calc(var(--size-constant) * 90px);
+    margin-top: calc(var(--size-constant) * 8px);
+    color: #f9f9f9;
+}
+
+.jw-tizen-playlist-item-image {
+    height: calc(var(--size-constant) * 178px);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.jw-tizen-playlist-item-title {
+    height: calc(var(--size-constant) * 72px);
+    font-size: calc(var(--size-constant) * 24px);
+    margin-top: calc(var(--size-constant) * 5px);
+    line-height: 1.29;
+    max-width: calc(var(--size-constant) * 315px);
+    transition: margin-left .2s ease;
+    white-space:  pre-wrap;
+    margin-left: 0;
+    margin-right: calc(var(--size-constant) * 20px);
+}
+
+.jw-tizen-playlist-item-container:focus .jw-tizen-playlist-item-title {
+    color: #ffffff;
+}
+
+.jw-tizen-playlist-item-image img {
+    height: 100%;
+    width: auto;
+}
+
+.jw-tizen-playlist-item-container {
+    outline: none;
+    max-height: calc(var(--size-constant) * 245px);
+    width: calc(var(--size-constant) * 315px);
+    transition: transform .2s ease;
+    margin-right: calc(var(--size-constant) * 42px);
+}
+
+.jw-tizen-playlist-item-container:focus {
+    border: calc(var(--size-constant) * 4px) solid white;
+    border-radius: calc(var(--size-constant) * 5px);
+    transform: scale(1.2);
+    margin: calc(var(--size-constant) * -4px);
+    margin-right: calc(var(--size-constant) * 38px);
+}
+
+.jw-tizen-playlist-row-wrapper {
+    height: calc(var(--size-constant) * 350px);
+    color: #d0d0d0;
+    font-family: Arial;
+    font-size: calc(var(--size-constant) * 24px);
+    line-height: 1.5;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    padding-left: calc(var(--size-constant) * 90px);
+}
+
+.jw-tizen-row-title {
+    font-family: Arial;
+    font-size: calc(var(--size-constant) * 36px);
+    color: #fff;
+    font-weight: normal;
+    margin-left: calc(var(--size-constant) * 90px);
+}
+
+.jw-tizen-watch-now {
+    height: calc(var(--size-constant) * 27px);
+    font-family: Arial;
+    font-size: calc(var(--size-constant) * 24px);
+    color: #f9f9f9;
+    padding-top: calc(var(--size-constant) * 280px);
+    margin-left: calc(var(--size-constant) * 90px);
+}
+
+.jw-tizen-banner {
+    padding-bottom: calc(var(--size-constant) * 100px);
+}
+
+.jw-tizen-banner-buttons {
+    margin-left: calc(var(--size-constant) * 90px);
+    margin-top: calc(var(--size-constant) * 45px);
+}
+
+.jw-tizen-banner-buttons button {
+    height: calc(var(--size-constant) * 80px);
+    border-radius: calc(var(--size-constant) * 10px);
+    font-size: calc(var(--size-constant) * 30px);
+    margin-right: calc(var(--size-constant) * 30px);
+    background-color: rgba(255, 255, 255, 0.25);
+    border: none;
+    color: #f9f9f9;
+    font-weight: bold;
+    outline: none;
+}
+
+.jw-tizen-banner-buttons button:focus {
+    background-color: #f9f9f9;
+    color: #20252e;
+}
+
+.jw-tizen-banner-buttons .jw-tizen-play {
+    width: calc(var(--size-constant) * 190px);
+}
+
+.jw-tizen-banner-buttons .jw-tizen-details {
+    width: calc(var(--size-constant) * 166px);
+}
+
+.jw-tizen-playlist-item-container:focus .jw-tizen-playlist-item-title.jw-tizen-text {
+    line-height: 1.29;
+    margin-left: calc(var(--size-constant) * 10px);
+    margin-bottom: calc(var(--size-constant) * 10px);
+    margin-top: calc(var(--size-constant) * 2.5px);
+}
