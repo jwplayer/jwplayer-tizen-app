@@ -9,6 +9,7 @@
     <icon src="jw-logo.png"/>
     <tizen:metadata key="http://samsung.com/tv/metadata/prelaunch.support" value="true"/>
     <name>TizenDemoApp</name>
+    <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
     <tizen:privilege name="http://developer.samsung.com/privilege/drminfo"/>
     <tizen:privilege name="http://developer.samsung.com/privilege/drmplay"/>
     <tizen:privilege name="http://tizen.org/privilege/internet"/>
