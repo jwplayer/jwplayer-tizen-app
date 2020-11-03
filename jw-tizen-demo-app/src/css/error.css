@@ -1,0 +1,10 @@
+.jw-error .jw-tizen-button,
+.jw-state-error .jw-tizen-button {
+    width: 440px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 70px;
+}
