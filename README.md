@@ -9,7 +9,7 @@ There are three screens to the demo app. The main playlist landing page, the vid
     
 ## Build System
 
-The Tizen Demo App has a unique build setup to make it easier to integrate webpack and es6. The build system is a simple webpack/babel setup used for compiling with eslint used for linting. The source code in `src` is compiled and output to `app/dis`. The app itself is created in this `app` directory and imports the compiled source code directly.
+The Tizen Demo App has a unique build setup to make it easier to integrate webpack and es6. The build system is a simple webpack/babel setup used for compiling with eslint used for linting. The source code in `src` is compiled and output to `app/dist`. The app itself is created in this `app` directory and imports the compiled source code directly.
 
 ## Getting Started
 
