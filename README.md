@@ -1,10 +1,11 @@
 # JW Player Tizen App
 
+[JW Player Tizen Docs: Embed a Player in a Tizen App](https://developer.jwplayer.com/jwplayer/docs/jw8-embed-a-player-in-a-tizen-app)
+
 This is JW Player’s demo application for Samsung Tizen Smart TVs showcasing how the player can be used for such applications. It is a Tizen Web Application built with HTML, CSS, and JS and targeting Tizen 4.0+ and 2018 Smart TVs and later.
 
 There are three screens to the demo app. The main playlist landing page, the video detail page, and the player page.
 
-*[JW Player Tizen Docs: Embed a Player in a Tizen App](https://developer.jwplayer.com/jwplayer/docs/jw8-embed-a-player-in-a-tizen-app)
     
 ## Build System
 
