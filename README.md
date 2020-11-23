@@ -23,7 +23,7 @@ Download Tizen SDK: https://developer.tizen.org/development/tizen-studio/downloa
 
 4. Open a terminal from the `tizen-demo-app` directory and run `npm install` to initialize the project dependencies.
     
-5. Run `yarn build`. This will generate or update `jw-tizen.css` and `jw-tizen.js` do not exist in the `app/dist` folder, both of which are needed to run the project.
+5. Run `yarn build`. This will generate or update `jw-tizen.css` and `jw-tizen.js` in the `app/dist` folder, both of which are needed to run the project.
     
 6. In `app/index.html`, you will need to add a link to your player that will be used in the app. It is the same process as [Adding a JW Player Library to a Page](https://developer.jwplayer.com/jwplayer/docs/jw8-add-a-player-library)
 
