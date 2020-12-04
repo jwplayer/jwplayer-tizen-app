@@ -1,3 +1,6 @@
 /.metadata
 .CustomProfile/
 /tizen-demo-app/node_modules
+/jw-tizen-demo-app/node_modules
+/jw-tizen-demo-app/app/.sign
+/jw-tizen-demo-app/app/dist
