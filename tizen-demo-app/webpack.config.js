@@ -1,6 +1,8 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
+const licenseNotice = require('./src/jwplayer.license.notice');
 
 module.exports = {
     mode: 'none',
@@ -42,5 +44,10 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/jw-tizen.css',
         }),
+        new webpack.BannerPlugin({
+            banner: `/*!\n${licenseNotice}\n*/`,
+            raw: true,
+            include: /^.*.js$/
+        })
     ]
 }
