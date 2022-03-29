@@ -39,6 +39,8 @@ Download Tizen SDK: https://developer.tizen.org/development/tizen-studio/downloa
 
 In order to run the application, you need to create an author and a distributor certificate: [Samsung Creating Certificates Docs](https://developer.samsung.com/SmartTV/develop/getting-started/setting-up-sdk/creating-certificates.html).
 
+When creating the distributor certificate, set the `Privilege` level to `Partner`.
+
 If you are running the application on a TV, you need to know the TVs Unique Device ID (DUID), which can be found here:
 
 -  On your TV, go to `Menu > Support > Contact Samsung > Unique Device ID`.
