@@ -14,7 +14,7 @@ The Tizen Demo App has a unique build setup to make it easier to integrate webpa
 
 Download Tizen SDK: https://developer.tizen.org/development/tizen-studio/download
 
-If you are using an M1 Macbook and encounter any installation issues, you can try installing Tizen Studio following this process: https://remoteorigin.com/blog/install-tizen-studio-on-apple-m1/
+**If you are using an M1 Macbook and encounter any installation issues, you can try installing Tizen Studio following this process: https://remoteorigin.com/blog/install-tizen-studio-on-apple-m1/*
 
 
 1. Clone or download this repository.
@@ -114,7 +114,7 @@ Once you finish setting up and configuring in Tizen Studio
 
 If you choose to create a custom player screen, you will need to handle back click events in order to ensure the remote control remains fully functional.
 
-		jwplayer().on('backClick', onBackClick);
+	jwplayer().on('backClick', onBackClick);
 
     function onBackClick() {
         // Back Click Functionality
