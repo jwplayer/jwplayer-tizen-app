@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserJSPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
 const licenseNotice = require('./src/jwplayer.license.notice');
@@ -37,7 +37,7 @@ module.exports = {
     optimization: {
         minimizer: [
             new TerserJSPlugin({}),
-            new OptimizeCSSAssetsPlugin({})
+            new CssMinimizerPlugin()
         ],
     },
     plugins: [

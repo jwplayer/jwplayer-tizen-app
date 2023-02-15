@@ -1,4 +1,7 @@
 /.metadata
 .CustomProfile/
+/tizen-demo-app/.metadata
 /tizen-demo-app/node_modules
 /tizen-demo-app/app/dist
+/tizen-demo-app/app/.metadata
+/tizen-demo-app/app/.settings
