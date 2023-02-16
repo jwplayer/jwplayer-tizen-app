@@ -74,7 +74,7 @@ You can run the application in 3 different environments - a Web Simulator, an Em
 **Right click on the simulator screen to open a settings menu so you can access things like the web inspector.*
 
 #### Emulator
-**There have been issues running the emulator on Mac OS's newer than Catalina, so it's recommended to use a real device if possible. You can try to work through HAXM issues following this guide: https://github.com/intel/haxm/wiki/Installation-Instructions-on-macOS (Archived Jan. 2023)*
+**There have been issues running the emulator on Mac OS's newer than Catalina, so it's recommended to use a real device if possible. If you are having HAXM issues, you can try to work through them following this guide: https://github.com/intel/haxm/wiki/Installation-Instructions-on-macOS (Archived Jan. 2023)*
 
 [Samsung Emulator Docs](https://developer.samsung.com/smarttv/develop/getting-started/using-sdk/tv-emulator.html)
 
@@ -112,7 +112,7 @@ Once you finish setting up and configuring in Tizen Studio
 ## Updating the App
 #### Creating Your Own Player Screen
 
-If you choose to create a custom player screen, you will need to handle back click events in order to ensure the remote control remains fully functional.
+If you choose to create a custom player screen, you will need to handle back click events in order to ensure controls remains fully functional like below:
 
 	jwplayer().on('backClick', onBackClick);
 
@@ -120,7 +120,7 @@ If you choose to create a custom player screen, you will need to handle back cli
         // Back Click Functionality
     }
 
-[Here](https://github.com/jwplayer/jwplayer-tizen-app/blob/master/tizen-demo-app/src/js/player.js#L21-L26) is an example of how the demo application handles them.
+[Here](https://github.com/jwplayer/jwplayer-tizen-app/blob/master/tizen-demo-app/src/js/player.js#L21-L26) is an example of how the demo application handles these events in the player screen.
 #### Adding/Updating Application Screens
 
 - Any changes made to the application’s source code belong in the `src` folder.
