@@ -105,9 +105,15 @@ Directions to setup the TV and configure it as a device are outlined in the link
     
 - When configuring the device in Tizen Studio, if there is no port, keep the default `26101` port
  
-Once you finish setting up and configuring in Tizen Studio
+Once you finish setting up and configuring in Tizen Studio:
 
-1. Right click the project and select `Run As > Tizen Web Application`
+1. Right click the project and select `Build Signed Package`
+
+2. In the Device Manager, right click on the TV name in the device list and be sure to select `Permit to install applications` 
+
+3. Right click the project and select `Run As > Tizen Web Application`
+
+The Tizen JW Demo app should then launch automatically within the TV.
     
 ## Updating the App
 #### Creating Your Own Player Screen
