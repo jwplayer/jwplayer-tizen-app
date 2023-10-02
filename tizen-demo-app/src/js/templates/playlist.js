@@ -32,7 +32,7 @@ export function playlistItemTemplate({ image, title }) {
     return (
         `<div class="jw-tizen-playlist-item-container" tabindex=0>
             <div class="jw-tizen-playlist-item-image">
-                <img src="${image}"></img>
+                <img src="${image}" alt="${image}"></img>
             </div>
             <div class="jw-tizen-playlist-item-title jw-tizen-text">${title}</div>
         </div>` 

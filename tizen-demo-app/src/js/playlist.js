@@ -1,5 +1,6 @@
 import Player from './player';
 import { VideoDetail } from './video-detail';
+import RedirectLoader from './redirect-loader';
 import {
     playlistGalleryTemplate,
     playlistRowTemplate,
@@ -27,11 +28,21 @@ class ViewModel {
         this.view = createHTML(template(viewProps));
         delete this.template;
     }
+
+    fixImages(index) {
+        const images = Array.from(this.view.querySelectorAll('img'));
+        if (images.length) {
+            images.forEach((image) => {
+                new RedirectLoader(image, image.src, index);
+            });
+        }
+    }
 }
 
 class Tile extends ViewModel {
-    constructor(props, template) {
+    constructor(props, template, index) {
         super(props, template);
+        this.index = index;
         this.handleKeydown = this.handleKeydown.bind(this);
     }
     
@@ -42,6 +53,7 @@ class Tile extends ViewModel {
         if (rowElement) {
             rowElement.appendChild(this.view);
         }
+//        this.fixImages(this.index);
         if (focusCallback) {
             this.view.removeEventListener('focus', focusCallback);
             this.view.addEventListener('focus', focusCallback);
@@ -97,7 +109,7 @@ class Row extends ViewModel {
         }
         const { props, tiles } = this;
 
-        playlistItems.forEach(playlistItem => {
+        playlistItems.forEach((playlistItem, i) => {
             const { title, image } = playlistItem;
             const tile = new Tile({ 
                 viewProps: { title, image }, 
@@ -105,7 +117,7 @@ class Row extends ViewModel {
                 focusCallback: this.onTileFocused,
                 playCallback: (evt) => props.parent.play(playlistItem, evt),
                 describeCallback: (evt) => props.parent.describe(playlistItem, evt)
-            }, playlistItemTemplate);
+            }, playlistItemTemplate, i);
             tiles.push(tile);
             tile.init();
         });
@@ -187,6 +199,11 @@ export class Gallery extends ViewModel {
         const { props } = this;
 
         this.getData(props).then(feeds => {
+/*            feeds.forEach((feed) => {
+                feed.playlist.forEach((item) => {
+                    item.sources = item.sources.filter((source) => source.type.toLowerCase() !== 'application/dash+xml');
+                });
+            });*/
             this.layout(feeds, props.bannerItem);
             this.addEventListeners();
             props.parent.view.appendChild(this.view);
