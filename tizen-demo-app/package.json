@@ -19,5 +19,6 @@
   "scripts": {
     "build": "webpack",
     "lint": "eslint ./src/js"
+    "initial-tizen-setup": "bash ./scripts/initial-tizen-setup.sh"
   }
 }
