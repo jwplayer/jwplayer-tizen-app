@@ -9,7 +9,7 @@
     "@babel/core": "7.10.2",
     "@babel/preset-env": "7.10.2",
     "babel-loader": "8.1.0",
-    "css-loader": "3.6.0",
+    "css-loader": "6.8.1",
     "css-minimizer-webpack-plugin": "4.2.2",
     "eslint": "7.3.1",
     "mini-css-extract-plugin": "2.7.2",
