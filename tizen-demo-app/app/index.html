@@ -14,17 +14,221 @@
     <script src="dist/js/jw-tizen.js"></script>
     <link rel="stylesheet" type="text/css" href="dist/css/jw-tizen.css"/>
     <script src="setup.js"></script>
-    <!--
-        Add a link to a player library here
-        <script src="https://www.yourdomain.com/{player_folder}/jwplayer.js"></script>
-        <script>jwplayer.key='{player_key}'</script>
+    <script src="https://ssl.p.jwpcdn.com/player/jrivera-tests/test-fix/jwplayer.js"></script>
+    <script>
+        // Expires 12/31/2023
+        jwplayer.key = '<GET A KEY>';
 
-        --OR--
+        // Playlist with sample videos
+        jwplayer.feeds = [{
+            title: 'Demo Videos',
+            description: 'A playlist',
+            playlist: [
+                {
+                    title: 'Into The Cave Of Wonders H.264 4k',
+                    mediaid: 'tEqLdF39',
+                    link: 'https://cdn.jwplayer.com/previews/tEqLdF39',
+                    image: 'https://cdn.jwplayer.com/v2/media/tEqLdF39/poster.jpg?width=1920',
+                    feedid: 'uwGPy2l7',
+                    duration: 534,
+                    pubdate: 1696022567,
+                    description: '',
+                    sources: [
+                        {
+                            file: 'https://cdn.jwplayer.com/manifests/tEqLdF39.m3u8',
+                            type: 'application/vnd.apple.mpegurl'
+                        }
+                    ],
+                    tracks: [
+                        {
+                            file: 'https://cdn.jwplayer.com/strips/tEqLdF39-120.vtt',
+                            kind: 'thumbnails'
+                        }
+                    ],
+                    variations: {}
+                },
+                {
+                    title: 'Big Buck Bunny H.265 4k 60fps (clear, hls)',
+                    image: 'https://cdn.jwplayer.com/v2/media/o80ue5Dw/poster.jpg?width=1920',
+                    duration: 634,
+                    description: '',
+                    sources: [
+                        {
+                            file: 'https://d1lrcw4ofzxyyp.cloudfront.net/jw-poc14/vod/sms/media-1/clear.ism/manifest.m3u8',
+                            type: 'application/vnd.apple.mpegurl'
+                        }
+                    ],
+                    tracks: [
+                        {
+                            file: 'https://cdn.jwplayer.com/strips/o80ue5Dw-120.vtt',
+                            kind: 'thumbnails'
+                        }
+                    ]
+                },
+                {
+                    title: 'Big Buck Bunny H.265 4k 60fps (clear, dash)',
+                    image: 'https://cdn.jwplayer.com/v2/media/o80ue5Dw/poster.jpg?width=1920',
+                    duration: 634,
+                    description: '',
+                    sources: [
+                        {
+                            file: 'https://d1lrcw4ofzxyyp.cloudfront.net/jw-poc14/vod/sms/media-1/clear.ism/manifest.mpd',
+                            type: 'application/dash+xml'
+                        }
+                    ],
+                    tracks: [
+                        {
+                            file: 'https://cdn.jwplayer.com/strips/o80ue5Dw-120.vtt',
+                            kind: 'thumbnails'
+                        }
+                    ]
+                },
+                {
+                    title: 'Big Buck Bunny H.265 4k 60fps (widevine, dash)',
+                    image: 'https://cdn.jwplayer.com/v2/media/o80ue5Dw/poster.jpg?width=1920',
+                    duration: 634,
+                    description: '',
+                    drm: {
+                      widevine: {
+                        url: 'https://widevine-license.vudrm.tech/proxy?token=jw-poc14%7c2023-09-30T21%3a40%3a19Z%7cZno7iv1nRL9j1Cj0bm3iuQ%3d%3d%7cace7a39268f9b93cd6da6be94494764a09069f04'
+                      }
+                    },
+                    sources: [
+                        {
+                            file: 'https://d1lrcw4ofzxyyp.cloudfront.net/jw-poc14/vod/sms/media-1/wvcenc.ism/manifest.mpd',
+                            type: 'application/dash+xml'
+                        }
+                    ],
+                    tracks: [
+                        {
+                            file: 'https://cdn.jwplayer.com/strips/o80ue5Dw-120.vtt',
+                            kind: 'thumbnails'
+                        }
+                    ]
+                },
+                {
+                    title: 'Big Buck Bunny H.264 4k 60fps',
+                    mediaid: 'o80ue5Dw',
+                    link: 'https://cdn.jwplayer.com/previews/o80ue5Dw',
+                    image: 'https://cdn.jwplayer.com/v2/media/o80ue5Dw/poster.jpg?width=1920',
+                    feedid: 'uwGPy2l7',
+                    duration: 634,
+                    pubdate: 1696022213,
+                    description: '',
+                    sources: [
+                        {
+                            file: 'https://cdn.jwplayer.com/manifests/o80ue5Dw.m3u8',
+                            type: 'application/vnd.apple.mpegurl'
+                        }
+                    ],
+                    tracks: [
+                        {
+                            file: 'https://cdn.jwplayer.com/strips/o80ue5Dw-120.vtt',
+                            kind: 'thumbnails'
+                        }
+                    ],
+                    variations: {}
+                },
+                {
+                    title: 'Cosmos Laundromat: First Cycle H.264',
+                    mediaid: 'ghgLKWmp',
+                    link: 'https://cdn.jwplayer.com/previews/ghgLKWmp',
+                    image: 'https://cdn.jwplayer.com/v2/media/ghgLKWmp/poster.jpg?width=1920',
+                    feedid: 'uwGPy2l7',
+                    duration: 758,
+                    pubdate: 1696018597,
+                    description: '',
+                    sources: [
+                        {
+                            file: 'https://cdn.jwplayer.com/manifests/ghgLKWmp.m3u8',
+                            type: 'application/vnd.apple.mpegurl'
+                        }
+                    ],
+                    tracks: [
+                        {
+                            file: 'https://cdn.jwplayer.com/strips/ghgLKWmp-120.vtt',
+                            kind: 'thumbnails'
+                        }
+                    ],
+                    variations: {}
+                },
+                {
+                    title: 'Agent-327 H.264',
+                    mediaid: 'jBCirFBj',
+                    link: 'https://cdn.jwplayer.com/previews/jBCirFBj',
+                    image: 'https://cdn.jwplayer.com/v2/media/jBCirFBj/poster.jpg?width=1920',
+                    feedid: 'uwGPy2l7',
+                    duration: 41,
+                    pubdate: 1696018596,
+                    description: '',
+                    sources: [
+                        {
+                            file: 'https://cdn.jwplayer.com/manifests/jBCirFBj.m3u8',
+                            type: 'application/vnd.apple.mpegurl'
+                        }
+                    ],
+                    tracks: [
+                        {
+                            file: 'https://cdn.jwplayer.com/strips/jBCirFBj-120.vtt',
+                            kind: 'thumbnails'
+                        }
+                    ],
+                    variations: {}
+                },
+                {
+                    title: 'Caminandes 3: Llamigos H.264',
+                    mediaid: 'p3CrUs34',
+                    link: 'https://cdn.jwplayer.com/previews/p3CrUs34',
+                    image: 'https://cdn.jwplayer.com/v2/media/p3CrUs34/poster.jpg?width=1920',
+                    feedid: 'uwGPy2l7',
+                    duration: 150,
+                    pubdate: 1696018596,
+                    description: '',
+                    sources: [
+                        {
+                            file: 'https://cdn.jwplayer.com/manifests/p3CrUs34.m3u8',
+                            type: 'application/vnd.apple.mpegurl'
+                        }
+                    ],
+                    tracks: [
+                        {
+                            file: 'https://cdn.jwplayer.com/strips/p3CrUs34-120.vtt',
+                            kind: 'thumbnails'
+                        }
+                    ],
+                },
+                {
+                    title: 'Big Buck Bunny H.264 1080p 30fps',
+                    mediaid: 'wZnfA7Uk',
+                    link: 'https://foo.com/bar',
+                    image: 'https://cdn.jwplayer.com/v2/media/wZnfA7Uk/poster.jpg?width=1920',
+                    feedid: 'uwGPy2l7',
+                    duration: 634,
+                    pubdate: 1648225214,
+                    description: '',
+                    sources: [
+                        {
+                            file: 'https://cdn.jwplayer.com/manifests/wZnfA7Uk.m3u8',
+                            type: 'application/vnd.apple.mpegurl'
+                        }
+                    ],
+                    tracks: [
+                        {
+                            file: 'https://cdn.jwplayer.com/tracks/MwGU22Sc.vtt',
+                            kind: 'chapters',
+                            label: '9yuj6cvq'
+                        },
+                        {
+                            file: 'https://cdn.jwplayer.com/strips/wZnfA7Uk-120.vtt',
+                            kind: 'thumbnails'
+                        }
+                    ],
+                    variations: {}
+                }
+            ]
+        }];
+    </script>
 
-        <script src="{CLOUD-HOSTED_PLAYER_LIBRARY_URL}"></script>
-
-        See: https://developer.jwplayer.com/jwplayer/docs/jw8-add-a-player-library
-    -->
 </head>
 
 <body>

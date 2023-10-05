@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/TizenDemoApp" version="0.2.1" viewmodes="maximized">
-    <access origin="*" subdomains="true"></access>
-    <tizen:application id="yQH28NHcki.TizenDemoApp" package="yQH28NHcki" required_version="2.3"/>
+    <access origin="*" subdomains="true"/>
+    <tizen:application id="yQH28NHcki.TizenDemoApp" package="yQH28NHcki" required_version="4.0"/>
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
     <feature name="http://tizen.org/feature/screen.size.normal.1440.2560"/>
@@ -14,5 +14,5 @@
     <tizen:privilege name="http://developer.samsung.com/privilege/drmplay"/>
     <tizen:privilege name="http://tizen.org/privilege/internet"/>
     <tizen:profile name="tv-samsung"/>
-    <tizen:setting screen-orientation="landscape" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
+    <tizen:setting screen-orientation="auto-rotation" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
 </widget>

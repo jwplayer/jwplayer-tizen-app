@@ -45,7 +45,7 @@ export class VideoDetail {
         this.div.innerHTML = videoDetail;
 
         const previewImage = this.div.querySelector('.jw-tizen-preview');
-        previewImage.style.backgroundImage = `url(${this.config.image})`;
+        previewImage.style.backgroundImage = `url("${this.config.image}")`;
 
         this.addButtons();
 
